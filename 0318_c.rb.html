@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>變XX_動畫</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+
+	<style type="text/css">
+
+		.main-header{ height: 40px;
+		              display: flex;
+		              justify-content: space-between;
+		              align-items: center;
+		              padding: 0 10px;
+		              background-color: #FDE;
+		              position: relative; }
+		.logo img{vertical-align: middle;}
+		.main-nav{ position: absolute;
+			         top: 100%;
+			         width: 100%;
+			         left: 0;
+		           background-color: #eaa; }
+		#menu-control{display: none;} /*隱藏checkbox*/
+		.main-nav a{ display: block;
+		             text-decoration: none;
+		             padding: 10px 20px; }
+
+		.main-nav a + a{ border-top: 1px solid #fff; }
+		.hb{ display: block;
+		     width: 28px;
+		     height: 28px;
+		     border: 1px solid #444; }
+
+
+		/*767以下手機*/
+		@media screen and (max-width: 767px){ /*要在同一個css切出手機用跟桌機用...難*/
+			#menu-control:checked ~ .main-header .main-nav{
+			             display: block;
+			           }
+		  .main-nav a{ display: block;
+		              }
+
+			.main-nav{
+				display: none;
+				position: absolute;
+				top: 100%;
+				width: 100%;
+				left: 0;
+			}
+			.main-nav a + a{
+				border-top: 1px solid #fff;
+			}
+			
+			.hb{display: block;
+			     width: 28px;
+			     height: 28px;
+			     border: 1px solid #444;
+			     display: flex; /*先橫排*/
+			     flex-direction: column; /*再變直排*/
+			     justify-content: space-around; /*水平對齊*/
+			     align-items: center; /*垂直對齊*/
+			     position: relative; /*X的定位用*/
+			     } 
+			.hb span{
+				   height: 2px;
+				   width: 20px;
+				   background-color: #567;
+				   display: block;
+					 top:0;
+					 bottom:0;
+					 left:0;
+					 right:0;
+					 margin: auto;
+					 transition: .6s;
+			}
+
+			.hb span:nth-child(1){	
+				 transform: translateY(3px) rotate(0deg);
+			}
+			.hb span:nth-child(2){	
+			}
+			.hb span:nth-child(3){
+			   transform: translateY(-3px) rotate(0deg);	
+			}
+
+
+
+			#menu-control:checked ~ .main-header .hb span:nth-child(1){				
+					position: absolute;
+					/*top:0;
+					bottom:0;
+					left:0;
+					right:0;
+					margin: auto;*/
+					transform: translateY(0px) rotate(45deg); /*以Y軸為機準轉，rotate轉幾度*/
+			}
+			#menu-control:checked ~ .main-header .hb span:nth-child(2){
+					display: none;
+			}
+			#menu-control:checked ~ .main-header .hb span:nth-child(3){
+					position: absolute;
+					/*top:0;
+					bottom:0;
+					left:0;
+					right:0;
+					margin: auto;*/
+					transform: translateY(0px) rotate(-45deg); 
+			}
+
+		}
+
+		@media screen and (min-width: 768px){ /*768以上平板*/
+				.hb{
+				display: block;
+		           	}
+		    .main-nav{
+		    display: flex;	
+		    }
+
+			}
+
+
+		
+	</style>
+
+
+</head>
+<body>
+
+	<input type="checkbox" name="" id="menu-control">
+		<div class="main-header">
+				<div class="logo">
+						<a href="#">
+							<img src="https://picsum.photos/30/30?image=0">							
+						</a>		
+				</div>
+
+				<label for="menu-control" class="hb">
+					 <span></span>
+					 <span></span>
+					 <span></span>
+				</label>
+
+				<nav class="main-nav">
+					<a href="#">link</a>
+					<a href="#">link</a>
+					<a href="#">link</a>
+					<a href="#">link</a>
+					<a href="#">link</a>
+					<a href="#">link</a>			
+			</nav>
+			
+		</div>
+
+
+
+	
+</body>
+</html>
+
+
